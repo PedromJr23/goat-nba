@@ -1,0 +1,16 @@
+# Dados brutos e bancos NUNCA vão para o Git (ver docs/TERMS_REGISTER.md)
+# Dados brutos e bancos NUNCA vão para o Git (ver docs/TERMS_REGISTER.md)
+data/
+*.duckdb
+*.duckdb.wal
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+__pycache__/
+.venv/
+
+# Variáveis de ambiente e segredos
+.env
+
+# Sistema Operacional
+.DS_Store

@@ -1,0 +1,13 @@
+[project]
+name = "goat-nba"
+version = "0.1.0"
+description = "Ranking de GOAT da NBA com análise de sensibilidade (Fase 3: raw/bronze/silver/gold)"
+requires-python = ">=3.10"
+dependencies = [
+  "duckdb>=1.0", "pandas", "requests", "beautifulsoup4", "lxml", "pyyaml",
+  "nba_api", "dbt-duckdb",
+]
+[project.optional-dependencies]
+dev = ["pytest"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,25 @@
+name: goat_nba
+version: "0.1.0"
+config-version: 2
+profile: goat_nba
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  goat_nba:
+    silver:
+      +schema: silver
+      +materialized: table
+    gold:
+      +schema: gold
+      +materialized: table
+
+# --- REGRA DO POOL (DRAFT) -------------------------------------------------------------
+# Esta é a ÚNICA fonte dos parâmetros. Pré-registro: fechar estes valores, dar commit e
+# criar a tag `pool-rule-v1` ANTES de gerar qualquer ranking (ver docs/PREREGISTRATION.md).
+vars:
+  trilha_b_first_season_end_year: 1974   # temporada 1973-74 (BPM/VORP existem a partir daqui)
+  pool_top_n_career: 40                  # DRAFT: top N em Win Shares acumulado (Trilha B)
+  pool_top_n_peak: 40                    # DRAFT: top N na soma das melhores temporadas
+  pool_peak_window: 5                    # nº de melhores temporadas somadas (WS)
+  pool_min_career_games: 400             # DRAFT: piso de jogos na Trilha B (amostra mínima)

@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: stg_bbr_advanced
+    description: "Tabela de staging da BBR com tipagem correta e colunas normalizadas."
+  - name: int_goat_pool
+    description: "Pool de candidatos do GOAT (Top 40 WS Acumulado OU Top 40 Pico)."

@@ -1,0 +1,6 @@
+version: 2
+models:
+  - name: gold_pool_candidates
+    columns:
+      - name: player_id
+        tests: [not_null, unique]

@@ -1,0 +1,8 @@
+pool_rules:
+  trilha: "B_era_moderna"
+  min_season_year: 1974
+  max_season_year: 2024
+  min_minutes_season: 500
+  criteria:
+    top_n_accumulated_ws: 40
+    top_n_peak_ws: 40

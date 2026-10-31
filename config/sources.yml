@@ -1,0 +1,23 @@
+# Configuração de ingestão. Ajuste user_agent ANTES de rodar (a CLI recusa o placeholder).
+paths:
+  db: data/goat.duckdb
+  raw_dir: data/raw
+
+bbr:
+  # Limite divulgado: 20 req/min (bloqueio de até 1 dia). Usamos metade, de propósito.
+  max_per_minute: 10
+  jitter_s: 2.0
+  user_agent: "goat-nba-personal-research (contato: pedromirandajunior@yahoo.com.br)"
+  terms_ref: "bbr-terms-third-party-capture-2026-04-17 (NAO verificado no site oficial)"
+  # Padrões de URL confirmados em material público (totals/per_minute/advanced).
+  pages:
+    advanced: "/leagues/NBA_{year}_advanced.html"
+    totals: "/leagues/NBA_{year}_totals.html"
+    per_minute: "/leagues/NBA_{year}_per_minute.html"
+  # TODO Fase 3b: confirmar URLs de playoffs, prêmios e liga antes de incluir aqui.
+
+nba:
+  max_per_minute: 10
+  jitter_s: 2.0
+  timeout_s: 30
+  terms_ref: "nba-terms-docx-sha256:2d5ae7743a601c388cce6e734672cebf005411007e0f3a48579cd8dfd01c2c3b"
