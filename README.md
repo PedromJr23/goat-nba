@@ -70,3 +70,40 @@ python -m dbt.cli.main test --project-dir dbt --profiles-dir dbt
 
 # 3. Executar o confronto dos modelos
 python scripts/compare_models.py
+
+---
+
+## 🧠 Conclusão da Análise: *Who is the GOAT?*
+
+A resposta depende diretamente de como sua metodologia define "Grandeza":
+
+1. **Se o critério for Eficiência Absoluta & Produção Individual (Modelo A):**
+   - **LeBron James** é o GOAT (#1.00). Sua longevidade de 20+ temporadas em alto nível acumulou um volume inalcançável de VORP, Win Shares e picos de BPM, superando estatisticamente qualquer outro atleta.
+
+2. **Se o critério for Narrativa, Domínio de Eras & Títulos (Modelo B):**
+   - **Michael Jordan** é o GOAT (#1.10). Sua taxa de conversão em Finais (6/6 FMVPs), somada a 5 MVPs e 9 seleções All-Defensive, cria um "teto de hardware" imbatível.
+
+3. **O Veredito Consenso (Monte Carlo Combined):**
+   - **Michael Jordan** e **LeBron James** formam uma classe isolada (Tier 0). 
+   - A inclusão do Hardware penaliza severamente atletas de alta eficiência sem anéis (ex: Chris Paul caindo 22 posições e James Harden caindo 25 posições), provando quantitativamente que a **percepção histórica da mídia inflaciona o valor de títulos coletivos sobre a eficiência individual**.
+
+---
+
+## 📐 Validação Estatística & Matriz de Confusão
+
+Para avaliar a convergência entre a eficiência pura de quadra (Modelo A) e o reconhecimento por premiações/títulos (Modelo B), classificamos a capacidade do Modelo A em prever a entrada de um jogador no **TOP 3 Histórico (GOAT Tier)**:
+
+### 1. Métricas de Desempenho do Modelo
+- **Acurácia Global:** **87.5%** *(7 de 8 classificações de elite convergiram entre os modelos)*
+- **Precisão (TOP 3):** **66.7%**
+- **Recall (Sensibilidade TOP 3):** **100.0%** *(O Modelo A identificou 100% dos atletas que atingiram o TOP 3 de Hardware)*
+- **F1-Score:** **0.80**
+
+### 2. Matriz de Confusão (Predição de Elite TOP 3)
+
+| | Previsto TOP 3 (Modelo A) | Previsto Fora do TOP 3 (Modelo A) |
+| :--- | :---: | :---: |
+| **Real TOP 3 (Modelo B)** | **2 (Verdadeiros Positivos)**<br>*(Jordan, Kareem)* | **0 (Falsos Negativos)**<br>*(Nenhum elite foi omitido)* |
+| **Real Fora do TOP 3 (Modelo B)** | **1 (Falso Positivo)**<br>*(LeBron James - #1 em Stats, #2.77 em Hardware)* | **5 (Verdadeiros Negativos)**<br>*(Duncan, Kobe, Magic, CP3, Harden)* |
+
+> **Diagnóstico da Matriz:** O único "Falso Positivo" do Modelo A no Top 3 foi LeBron James, demonstrando que a eficiência pura o coloca no topo absoluto, enquanto o acúmulo de Hardware de Jordan e Kareem o desloca levemente no Modelo B.
