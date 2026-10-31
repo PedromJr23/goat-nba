@@ -117,6 +117,16 @@ Para avaliar a convergência entre a eficiência pura de quadra (Modelo A) e o r
 
 ---
 
+## ⚠️ Limitações Metodológicas & Análise de Vieses Estruturais
+
+1. **Pace Bias (Ritmo de Jogo):** Eras aceleradas (anos 80) inflacionam estatísticas de volume em relação a eras defensivas lentas (anos 2000). *Mitigação:* Z-Scores normalizados intra-temporada.
+2. **Data Availability Bias (Pré-1974):** A ausência de tocos, roubos e play-by-play em eras antigas subestima a produção defensiva avançada de lendas pré-1974. *Mitigação:* Foco analítico restrito à era 1974–2024.
+3. **Media & Narrative Bias (Voter Fatigue):** O Modelo B herda escolhas jornalísticas subjetivas de MVP/All-NBA. *Mitigação:* Balanceamento com Finals MVPs e campeonatos como protagonista.
+4. **Supporting Cast Bias (Contexto de Equipe):** Títulos e Win Shares dependem da estrutura da franquia, beneficiando jogadores de dinastias (Duncan, Magic). *Mitigação:* Distribuições Dirichlet em Monte Carlo variando a relevância do hardware.
+5. **Usage vs. Efficiency Bias:** PER e True Shooting % favorecem armadores de alto aproveitamento, penalizando arremessadores de volume sob pressão (Kobe Bryant). *Mitigação:* Visualização isolada na Matriz de Perfis Históricos.
+
+---
+
 ## 🚀 Como Executar o Projeto Localmente
 
 ```bash
