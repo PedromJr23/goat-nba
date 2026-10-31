@@ -42,18 +42,19 @@ O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado
 
 ## 📊 Principais Descobertas (Modelo A vs. Modelo B)
 
-![Modelo Comparison](docs/assets/model_comparison.png)
+## 📊 Principais Descobertas (Modelo A vs. Modelo B)
 
-| Jogador | Rank Modelo A (Stats) | Rank Modelo B (Hardware) | Salto (B - A) | Diagnóstico Metodológico |
-| :--- | :---: | :---: | :---: | :--- |
-| **Michael Jordan** | #2.00 | **#1.10** | **+0.90** | Dominância absoluta impulsionada por 6x Finals MVP (100% em Finais). |
-| **LeBron James** | **#1.00** | #2.77 | **-1.77** | Líder do Modelo A devido à longevidade de elite e volume acumulado de WS/VORP. |
-| **Kareem Abdul-Jabbar** | #3.95 | #2.23 | **+1.72** | Estabilizador histórico no Top 4 de ambas as metodologias. |
-| **Tim Duncan** | #13.78 | **#3.99** | **+9.80** | Salto expressivo por 5 Anéis, 3 FMVPs e 15 seleções All-Defensive. |
-| **Kobe Bryant** | #19.97 | **#5.44** | **+14.56** | **Maior impacto da análise:** Demonstra como o Hardware transforma a percepção de um atleta com estatísticas frias de box score. |
-| **Magic Johnson** | #16.09 | **#5.29** | **+10.81** | Ganho expressivo por 3x MVP, 3x FMVP e 5 Títulos. |
-| **Chris Paul** | **#3.91** | #25.86 | **-21.95** | Topo em eficiência/posse, severamente penalizado no Hardware por ausência de títulos. |
-| **James Harden** | #6.73 | #31.85 | **-25.12** | Altíssima eficiência em temporada regular sem correspondência em títulos. |
+### 1. Discrepância de Rankings (Dumbbell Plot)
+![Dumbbell Plot](docs/assets/chart_1_dumbbell.png)
+
+### 2. Sensibilidade ao Hardware (Ganhadores vs. Penalizados)
+![Hardware Sensitivity](docs/assets/chart_2_sensitivity.png)
+
+### 3. Reorganização da Hierarquia Histórica (Slope Chart)
+![Slope Chart](docs/assets/chart_3_slope.png)
+
+### 4. Matriz de Perfis Históricos (Scatter Quadrants)
+![Scatter Quadrants](docs/assets/chart_4_quadrants.png)
 
 ---
 
