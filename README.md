@@ -15,8 +15,7 @@ Através da comparação de dois modelos estatísticos totalmente isolados via s
 
 ## 🏗️ Arquitetura de Dados & SDLC (Medallion Architecture)
 
-O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado e auditado via **dbt**: 
-
+O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado e auditado via **dbt**:
 - **Bronze:** Ingestão bruta de estatísticas avançadas históricas por jogador/temporada (`bbr_season_advanced`).
 - **Silver:** Normalização dos schemas em `stg_bbr_advanced` e isolamento do pool de candidatos em `int_goat_pool`.
 - **Gold:** Tabelas multidimensionais e fatos (`fct_goat_season_zscores`, `gold_pool_candidates` e `gold_player_hardware`).
@@ -29,7 +28,7 @@ O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado
 ## 🔬 Mitigação de Vieses Metodológicos
 
 1. **Sample Size Bias (Viés do Tamanho da Amostra):**
-   - *Desafio:* Jogadores em pico recente (ex: Nikola Jokić) dominam médias por jogo em amostras curtas de carreira.
+   - *Desafio:* Jogadores em pico recente dominam médias por jogo em amostras curtas de carreira.
    - *Solução:* Decomposição vetorial balanceando **Pico das 5 Melhores Temporadas** com **Volume Acumulado**.
 2. **Double Counting (Contagem Dupla):**
    - *Desafio:* Pontuar estatísticas avançadas (PER/WS) e prêmios (MVP) no mesmo modelo gera circularidade metodológica.
@@ -40,9 +39,7 @@ O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado
 
 ---
 
-## 📊 Principais Descobertas (Modelo A vs. Modelo B)
-
-## 📊 Principais Descobertas (Modelo A vs. Modelo B)
+## 📊 Principais Descobertas & Painel Diagnóstico
 
 ### 1. Discrepância de Rankings (Dumbbell Plot)
 ![Dumbbell Plot](docs/assets/chart_1_dumbbell.png)
@@ -55,6 +52,31 @@ O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado
 
 ### 4. Matriz de Perfis Históricos (Scatter Quadrants)
 ![Scatter Quadrants](docs/assets/chart_4_quadrants.png)
+
+---
+
+## 📋 Análise de Casos Extremos & Anomalias de Modelo
+
+Abaixo está o detalhamento dos atletas que apresentaram as maiores divergências estruturais entre a eficiência de quadra isolada (**Modelo A**) e o reconhecimento por títulos e premiações (**Modelo B**):
+
+| Atleta | Rank Modelo A (Stats Puras) | Rank Modelo B (Hardware) | Variação (Δ) | Diagnóstico & Anomalia Metodológica |
+| :--- | :---: | :---: | :---: | :--- |
+| **Kobe Bryant** | **#19.97** | **#5.44** | **+14.53** | **O Maior Salto Narrativo:** No Modelo A (focado em PER/BPM/WS), Kobe fica fora do Top 15 devido à eficiência de arremesso e compartilhamento de posse. No Modelo B, dá um salto massivo de ~15 posições impulsionado por 5 Títulos, 2 FMVPs e 12x All-Defensive. |
+| **Magic Johnson** | **#16.09** | **#5.29** | **+10.80** | **Eficiência x Volume x Títulos:** Apresenta médias de carreira altíssimas, mas sua aposentadoria precoce reduz o volume acumulado no Modelo A. No Modelo B, entra no Top 5 consolidado por 3x MVP, 3x FMVP e 5 Anéis em 13 temporadas. |
+| **Tim Duncan** | **#13.78** | **#3.99** | **+9.79** | **Ancoragem Silenciosa:** O estilo de jogo utilitário e moderado de estatísticas por jogo o coloca em #13 no Modelo A, mas a consistência de 15x All-NBA, 15x All-Defensive e 5 Títulos o catapulta para o Top 4 do Modelo B. |
+| **Chris Paul** | **#3.91** | **#25.86** | **-21.95** | **O Monstro da Eficiência sem Anéis:** Dono de uma das melhores razões de assistência/turnover e BPM da história (#4 em Stats), despenca 22 posições no Modelo B por nunca ter conquistado um título de campeão ou Finals MVP. |
+| **James Harden** | **#6.73** | **#31.85** | **-25.12** | **A Maior Queda por Hardware:** Dominou métricas avançadas na década de 2010 (WS/VORP), garantindo Top 7 no Modelo A. A ausência de campeonatos o empurra para fora do Top 30 no Modelo B. |
+
+---
+
+### 🔍 Principais Insights Extraídos dos Dados
+
+1. **A 'Cláusula Kobe & Magic' (O Peso do Anel na Percepção Histórica):**
+   - Atletas com forte presença visual/narrativa e conquistas de time (Magic e Kobe) sofrem penalizações severas em modelos de estatísticas frias de box-score, mas dominam modelos que consideram prêmios da mídia.
+2. **A Métrica Fria vs. O Teto de Campeão:**
+   - Jogadores como **Chris Paul** e **James Harden** provam que estatísticas avançadas (PER/BPM/WS) tendem a inflar criadores de jogadas de alta posse de bola, mas o filtro de Hardware é implacável com a ausência de anéis.
+3. **Consistência Absoluta no Topo (Tier 0):**
+   - **Michael Jordan** e **LeBron James** são os únicos atletas que permanecem no **Top 2 em ambas as metodologias**, demonstrando que sua grandeza transcende qualquer debate entre *analytics* e narrativa clássica.
 
 ---
 
@@ -93,6 +115,8 @@ Para avaliar a convergência entre a eficiência pura de quadra (Modelo A) e o r
 
 > **Diagnóstico da Matriz:** O único "Falso Positivo" do Modelo A no Top 3 foi LeBron James, demonstrando que a eficiência pura o coloca no topo absoluto, enquanto o acúmulo de Hardware de Jordan e Kareem o desloca levemente no Modelo B.
 
+---
+
 ## 🚀 Como Executar o Projeto Localmente
 
 ```bash
@@ -105,6 +129,3 @@ python -m dbt.cli.main test --project-dir dbt --profiles-dir dbt
 
 # 3. Executar o confronto dos modelos
 python scripts/compare_models.py
-
----
-
