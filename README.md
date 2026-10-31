@@ -58,21 +58,6 @@ O pipeline utiliza **DuckDB** como Data Warehouse analítico local, transformado
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
-
-```bash
-# 1. Instalar dependências
-pip install -r requirements.txt
-
-# 2. Executar o pipeline dbt (Build & Test)
-python -m dbt.cli.main run --project-dir dbt --profiles-dir dbt
-python -m dbt.cli.main test --project-dir dbt --profiles-dir dbt
-
-# 3. Executar o confronto dos modelos
-python scripts/compare_models.py
-
----
-
 ## 🧠 Conclusão da Análise: *Who is the GOAT?*
 
 A resposta depende diretamente de como sua metodologia define "Grandeza":
@@ -107,3 +92,19 @@ Para avaliar a convergência entre a eficiência pura de quadra (Modelo A) e o r
 | **Real Fora do TOP 3 (Modelo B)** | **1 (Falso Positivo)**<br>*(LeBron James - #1 em Stats, #2.77 em Hardware)* | **5 (Verdadeiros Negativos)**<br>*(Duncan, Kobe, Magic, CP3, Harden)* |
 
 > **Diagnóstico da Matriz:** O único "Falso Positivo" do Modelo A no Top 3 foi LeBron James, demonstrando que a eficiência pura o coloca no topo absoluto, enquanto o acúmulo de Hardware de Jordan e Kareem o desloca levemente no Modelo B.
+
+## 🚀 Como Executar o Projeto Localmente
+
+```bash
+# 1. Instalar dependências
+pip install -r requirements.txt
+
+# 2. Executar o pipeline dbt (Build & Test)
+python -m dbt.cli.main run --project-dir dbt --profiles-dir dbt
+python -m dbt.cli.main test --project-dir dbt --profiles-dir dbt
+
+# 3. Executar o confronto dos modelos
+python scripts/compare_models.py
+
+---
+
